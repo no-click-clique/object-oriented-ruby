@@ -11,7 +11,7 @@
 # # hashrocket syntax
 # # employee1 = {"first_name" => "Tori", "last_name" => "Kafati", "salary" => 80000, "active" => true}
 # # javascript syntax
-# employee1 = {first_name: "Tori", last_name: "Pang", salary: 80000, active: true}
+# employee1 = {first_name: "Tori", last_name: "Kafati", salary: 80000, active: true}
 # # symbol syntax
 # employee2 = {:first_name => "Benji", :last_name => "Pang", :salary => 70000, :active => true}
 # puts "#{employee1[:first_name]} #{employee1[:last_name]} makes #{employee1[:salary]} a year."
@@ -28,11 +28,11 @@ class Employee
   # this does both attr_reader and attr_writer for every instance variable
   # attr_accessor :first_name, :last_name, :salary, :active
 
-  def initialize(input_first_name, input_last_name, input_salary, input_active)
-    @first_name = input_first_name
-    @last_name = input_last_name
-    @salary = input_salary
-    @active = input_active
+  def initialize(input_hash)
+    @first_name = input_hash[:first_name]
+    @last_name = input_hash[:last_name]
+    @salary = input_hash[:salary]
+    @active = input_hash[:active]
   end
 
   def print_info
@@ -46,8 +46,8 @@ class Employee
   end
 end
 
-employee1 = Employee.new("Tori", "Kafati", 80000, true)
-employee2 = Employee.new("Benji", "Pang", 70000, true)
+employee1 = Employee.new({last_name: "Kafati", salary: 80000, active: true, first_name: "Tori"})
+employee2 = Employee.new(first_name: "Benji", last_name: "Pang", salary: 70000, active: true)
 employee1.print_info
 employee2.print_info
 puts employee2.first_name
