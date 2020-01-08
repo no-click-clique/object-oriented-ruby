@@ -8,12 +8,69 @@
 
 # Represent an employee as a hash
 
-# hashrocket syntax
-# employee1 = {"first_name" => "Tori", "last_name" => "Kafati", "salary" => 80000, "active" => true}
-# javascript syntax
-employee1 = {first_name: "Tori", last_name: "Pang", salary: 80000, active: true}
-# symbol syntax
-employee2 = {:first_name => "Benji", :last_name => "Pang", :salary => 70000, :active => true}
-puts "#{employee1[:first_name]} #{employee1[:last_name]} makes #{employee1[:salary]} a year."
-puts "#{employee2[:first_name]} #{employee2[:last_name]} makes #{employee2[:salary]} a year."
+# # hashrocket syntax
+# # employee1 = {"first_name" => "Tori", "last_name" => "Kafati", "salary" => 80000, "active" => true}
+# # javascript syntax
+# employee1 = {first_name: "Tori", last_name: "Pang", salary: 80000, active: true}
+# # symbol syntax
+# employee2 = {:first_name => "Benji", :last_name => "Pang", :salary => 70000, :active => true}
+# puts "#{employee1[:first_name]} #{employee1[:last_name]} makes #{employee1[:salary]} a year."
+# puts "#{employee2[:first_name]} #{employee2[:last_name]} makes #{employee2[:salary]} a year."
 
+
+
+# Represent an employee as a class instance
+
+class Employee
+  def initialize(input_first_name, input_last_name, input_salary, input_active)
+    @first_name = input_first_name
+    @last_name = input_last_name
+    @salary = input_salary
+    @active = input_active
+  end
+
+  # getter/reader instance methods
+  def first_name
+    @first_name
+  end
+
+  def last_name
+    @last_name
+  end
+
+  def salary
+    @salary
+  end
+
+  def active
+    @active
+  end
+
+  # setter/writer instance method
+  def active=(input_active)
+    @active = input_active
+  end
+
+  def print_info
+    puts "#{first_name} #{last_name} makes #{@salary} a year."
+  end
+
+  def give_annual_raise
+    puts @salary
+    @salary = 1.05 * @salary
+    puts @salary
+  end
+end
+
+employee1 = Employee.new("Tori", "Kafati", 80000, true)
+employee2 = Employee.new("Benji", "Pang", 70000, true)
+employee1.print_info
+employee2.print_info
+puts employee2.first_name
+puts employee2.last_name
+puts employee2.salary
+puts employee2.active
+
+employee2.active = false
+
+puts employee2.active
