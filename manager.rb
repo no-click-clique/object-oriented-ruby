@@ -14,9 +14,7 @@ class Employee
   end
 
   def give_annual_raise
-    puts @salary
     @salary = 1.05 * @salary
-    puts @salary
   end
 end
 
@@ -26,7 +24,11 @@ employee2 = Employee.new(first_name: "Benji", last_name: "Pang", salary: 70000, 
 
 class Manager < Employee
   attr_accessor :employees
-  
+
+  # def employees
+  #   @employees
+  # end
+
   def initialize(input_hash)
     super
     @employees = input_hash[:employees]
@@ -37,8 +39,22 @@ class Manager < Employee
     # some fancy lirary would actually do this
     puts "Email sent!"
   end
+
+  def give_all_raises
+    employees.each do |employee|
+      p employee.give_annual_raise
+    end
+  end
+
+  def fire_all_employees
+    employees.each do |employee|
+      p employee.active = false
+    end
+  end
 end
 
 manager = Manager.new(first_name: "Jeneen", last_name: "LeMar", salary: 100000, active: true, employees: [employee1, employee2])
-manager.print_info
-manager.send_report
+# manager.print_info
+# manager.send_report
+# manager.give_all_raises
+manager.fire_all_employees
