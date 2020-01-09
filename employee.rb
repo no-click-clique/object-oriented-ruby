@@ -54,7 +54,5 @@ puts employee2.first_name
 puts employee2.last_name
 puts employee2.salary
 puts employee2.active
-
 employee2.active = false
-
 puts employee2.active
