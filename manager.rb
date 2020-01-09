@@ -2,9 +2,6 @@ class Employee
   attr_reader :first_name, :last_name, :salary, :active
   attr_writer :active
 
-  # this does both attr_reader and attr_writer for every instance variable
-  # attr_accessor :first_name, :last_name, :salary, :active
-
   def initialize(input_hash)
     @first_name = input_hash[:first_name]
     @last_name = input_hash[:last_name]
@@ -28,6 +25,12 @@ employee2 = Employee.new(first_name: "Benji", last_name: "Pang", salary: 70000, 
 
 
 class Manager < Employee
+
+  def initialize(input_hash)
+    super
+    @employees = input_hash[:employees]
+  end
+
   def send_report
     puts "Sending email..."
     # some fancy lirary would actually do this
@@ -35,6 +38,6 @@ class Manager < Employee
   end
 end
 
-manager = Manager.new(first_name: "Jeneen", last_name: "LeMar", salary: 100000, active: true)
+manager = Manager.new(first_name: "Jeneen", last_name: "LeMar", salary: 100000, active: true, employees: [employee1, employee2])
 manager.print_info
 manager.send_report
