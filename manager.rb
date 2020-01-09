@@ -25,7 +25,8 @@ employee2 = Employee.new(first_name: "Benji", last_name: "Pang", salary: 70000, 
 
 
 class Manager < Employee
-
+  attr_accessor :employees
+  
   def initialize(input_hash)
     super
     @employees = input_hash[:employees]
