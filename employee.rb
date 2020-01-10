@@ -40,19 +40,7 @@ class Employee
   end
 
   def give_annual_raise
-    puts @salary
     @salary = 1.05 * @salary
-    puts @salary
   end
 end
 
-employee1 = Employee.new({last_name: "Kafati", salary: 80000, active: true, first_name: "Tori"})
-employee2 = Employee.new(first_name: "Benji", last_name: "Pang", salary: 70000, active: true)
-employee1.print_info
-employee2.print_info
-puts employee2.first_name
-puts employee2.last_name
-puts employee2.salary
-puts employee2.active
-employee2.active = false
-puts employee2.active
