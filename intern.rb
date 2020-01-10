@@ -1,3 +1,11 @@
+module EmailReportable
+  def send_report
+    puts "Sending email..."
+    # some fancy lirary would actually do this
+    puts "Email sent!"
+  end
+end
+
 class Employee
   attr_reader :first_name, :last_name, :salary, :active
   attr_writer :active
@@ -23,21 +31,12 @@ employee2 = Employee.new(first_name: "Benji", last_name: "Pang", salary: 70000, 
 
 
 class Manager < Employee
+  include EmailReportable
   attr_accessor :employees
-
-  # def employees
-  #   @employees
-  # end
 
   def initialize(input_hash)
     super
     @employees = input_hash[:employees]
-  end
-
-  def send_report
-    puts "Sending email..."
-    # some fancy lirary would actually do this
-    puts "Email sent!"
   end
 
   def give_all_raises
@@ -51,11 +50,14 @@ class Manager < Employee
       p employee.active = false
     end
   end
-
 end
 
 manager = Manager.new(first_name: "Jeneen", last_name: "LeMar", salary: 100000, active: true, employees: [employee1, employee2])
-# manager.print_info
-# manager.send_report
-# manager.give_all_raises
-manager.fire_all_employees
+
+class Intern < Employee
+  include EmailReportable
+end
+
+intern = Intern.new(first_name: "Christine", last_name: "Redhead", salary: 30000, active: true)
+intern.print_info
+intern.send_report
