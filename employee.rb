@@ -20,27 +20,28 @@
 
 
 # Represent an employee as a class instance
+module Actualize
+  class Employee
+    attr_reader :first_name, :last_name, :salary, :active
+    attr_writer :active
 
-class Employee
-  attr_reader :first_name, :last_name, :salary, :active
-  attr_writer :active
+    # this does both attr_reader and attr_writer for every instance variable
+    # attr_accessor :first_name, :last_name, :salary, :active
 
-  # this does both attr_reader and attr_writer for every instance variable
-  # attr_accessor :first_name, :last_name, :salary, :active
+    def initialize(input_hash)
+      @first_name = input_hash[:first_name]
+      @last_name = input_hash[:last_name]
+      @salary = input_hash[:salary]
+      @active = input_hash[:active]
+    end
 
-  def initialize(input_hash)
-    @first_name = input_hash[:first_name]
-    @last_name = input_hash[:last_name]
-    @salary = input_hash[:salary]
-    @active = input_hash[:active]
-  end
+    def print_info
+      puts "#{first_name} #{last_name} makes #{@salary} a year."
+    end
 
-  def print_info
-    puts "#{first_name} #{last_name} makes #{@salary} a year."
-  end
-
-  def give_annual_raise
-    @salary = 1.05 * @salary
+    def give_annual_raise
+      @salary = 1.05 * @salary
+    end
   end
 end
 
